@@ -12,7 +12,7 @@ import os
 
 # LOAD DATA
 iris = load_iris()
-print("\n🌸 IRIS DATASET INFO 🌸")
+print("\n IRIS DATASET INFO ")
 print(f"Flower measurements: {iris.feature_names}")
 print(f"Flower species: {iris.target_names}")
 print(f"Total samples: {len(iris.data)}")
@@ -37,29 +37,29 @@ print(f"Testing on {len(X_test)} flowers")
 model = DecisionTreeClassifier(max_depth=3, random_state=42)
 # max_depth=3 means tree asks up to 3 questions before deciding
 
-print("\n🌳 Training the decision tree...")
+print("\n Training the decision tree...")
 model.fit(X_train, y_train)
 
 
 predictions = model.predict(X_test)
 accuracy = accuracy_score(y_test, predictions)
 
-print(f"\n✅ Test accuracy: {accuracy*100:.2f}%")
+print(f"\n Test accuracy: {accuracy*100:.2f}%")
 
 
-print("\n🔍 Detailed results:")
+print("\n Detailed results:")
 for i in range(len(X_test)):
     true_species = iris.target_names[y_test[i]]
     pred_species = iris.target_names[predictions[i]]
     if true_species != pred_species:
-        print(f"  ❌ Flower {i+1}: Was {true_species}, but AI said {pred_species}")
+        print(f"   Flower {i+1}: Was {true_species}, but AI said {pred_species}")
     else:
-        print(f"  ✅ Flower {i+1}: {true_species} (correct)")
+        print(f"  Flower {i+1}: {true_species} (correct)")
 
-print("\n🎉 Basic classifier done!")
+print("\n Basic classifier done!")
 
 
-print("\n📊 Creating visualizations...")
+print("\n Creating visualizations...")
 
 # Create a figure with 2 subplots side by side
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
@@ -120,12 +120,12 @@ plt.tight_layout()
 plt.savefig('iris_visualization.png', dpi=150)
 plt.show()
 
-print("✅ Visualizations saved as 'iris_visualization.png'")
+print("Visualizations saved as 'iris_visualization.png'")
 
 
-print("\n" + "="*50)
-print("🤖 IRIS FLOWER PREDICTOR")
-print("="*50)
+
+print(" IRIS FLOWER PREDICTOR")
+
 
 while True:
     print("\nEnter flower measurements (or 'quit' to exit):")
@@ -160,7 +160,7 @@ while True:
         probabilities = model.predict_proba(measurements)[0]
         confidence = max(probabilities) * 100
         
-        print(f"\n🔮 AI Prediction: {predicted_species.upper()}")
+        print(f"\n AI Prediction: {predicted_species.upper()}")
         print(f"   Confidence: {confidence:.1f}%")
         
        
@@ -171,17 +171,17 @@ while True:
         
         
         if confidence < 70:
-            print("\n   ⚠️  Low confidence! Measurements might be between species.")
+            print("\n   Low confidence! Measurements might be between species.")
             
     except ValueError:
-        print("❌ Please enter valid numbers!")
+        print Please enter valid numbers!")
     except KeyboardInterrupt:
         break
 
-print("\n👋 Thanks for using Iris Classifier!")
+print("\n Thanks for using Iris Classifier!")
 
 
-save_model = input("\n💾 Save this model for later? (yes/no): ")
+save_model = input("\n Save this model for later? (yes/no): ")
 
 if save_model.lower() == 'yes':
     model_filename = 'iris_model.joblib'
@@ -193,9 +193,9 @@ if save_model.lower() == 'yes':
     with open('iris_info.pkl', 'wb') as f:
         pickle.dump({'feature_names': iris.feature_names,
                     'target_names': iris.target_names}, f)
-    print("✅ Info saved as 'iris_info.pkl'")
+    print(" Info saved as 'iris_info.pkl'")
 
 # Show how to load it later
-print("\n📖 To load this model in the future:")
+print("\n To load this model in the future:")
 print("  import joblib")
 print("  model = joblib.load('iris_model.joblib')")
